@@ -1,7 +1,5 @@
 # Prerequisites
 *.d
-cmake-build-debug/
-.idea
 
 # Compiled Object files
 *.slo
@@ -32,4 +30,3 @@ cmake-build-debug/
 *.exe
 *.out
 *.app
-/test/lib/
