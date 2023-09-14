@@ -4,7 +4,9 @@ project(lab1)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_subdirectory(test/lib/googletest-main)
+#add_compile_options(-g -rdynamic)
+
+add_subdirectory(lib/googletest)
 
 set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
 

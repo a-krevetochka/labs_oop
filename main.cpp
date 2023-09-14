@@ -1,5 +1,5 @@
 #include <iostream>
-#include "src/bracket_row.h"
+#include "src/BracketRow.h"
 
 using namespace std;
 using namespace bracket_row;

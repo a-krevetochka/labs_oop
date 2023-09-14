@@ -1,10 +1,13 @@
 //
 // Created by meteo on 13.09.2023.
 //
+
+
 #include "gtest/gtest.h"
-#include "../../src/bracket_row.h"
+#include "../../src/BracketRow.h"
 using namespace std;
 using namespace bracket_row;
+
 TEST(simple_correct_test, test1){
     BracketRow simpleTest("()");
 

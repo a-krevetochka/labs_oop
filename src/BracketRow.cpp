@@ -4,28 +4,28 @@
 
 #include <iostream>
 #include <stack>
-#include "bracket_row.h"
+#include "BracketRow.h"
 #include <map>
 #include <utility>
 using namespace std;
 using namespace bracket_row;
 
-BracketRow::BracketRow(std::string row):data(std::move(row)){};
+BracketRow::BracketRow(std::string row): mData(std::move(row)){};
 
 void BracketRow::setData(std::string row) {
-    this->data = std::move(row);
+    this->mData = std::move(row);
 }
 
 string BracketRow::getData() {
-    return this->data;
+    return this->mData;
 }
 
 bool BracketRow::checkFirstSymbolIsOpeningBracket() {
-    return this->data.at(0) == '(';
+    return this->mData.at(0) == '(';
 }
 
 void BracketRow::checkRowIsContainOnlyBrackets() {
-    for (char bracket: this->data) {
+    for (char bracket: this->mData) {
         if (bracket != ')' && bracket != '('){
             throw invalid_argument("row must contain only round brackets");
         }

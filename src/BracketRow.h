@@ -10,9 +10,6 @@
 namespace bracket_row{
 
     class BracketRow {
-    private:
-        std::string data;
-
     public:
         void setData(std::string row);
 
@@ -25,7 +22,13 @@ namespace bracket_row{
         void checkRowIsContainOnlyBrackets();
 
         static bool isOrderOfTheBracketsCorrect(BracketRow *bracketRow);
+
+    private:
+
+        std::string mData;
+
     };
+
 }
 
 #endif //BRACKET_ROW_H
