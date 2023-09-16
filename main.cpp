@@ -1,13 +1,21 @@
-#include <iostream>
-#include "src/BracketRow.h"
+#include "brackets.h"
+#include <stdexcept>
 
 using namespace std;
-using namespace bracket_row;
 
-int main() {
-    string input_row;
-    cin >> input_row;
-    BracketRow row(input_row);
-    bool isCorrect = BracketRow::isOrderOfTheBracketsCorrect(&row);
-    cout << boolalpha << isCorrect << endl;
+bool isOrderOfTheBracketsCorrect(string inputString);
+
+int main()
+{	
+	string inputString;
+	cin >> inputString;
+	try {
+		bool result = isOrderOfTheBracketsCorrect(inputString);
+		cout << boolalpha << result << endl;
+	}
+	catch (invalid_argument e) {
+		cout << e.what() << endl;
+		return 0;
+	}
+	return 0;
 }

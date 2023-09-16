@@ -1,36 +1,15 @@
-# Prerequisites
-*.d
+﻿################################################################################
+# Данный GITIGNORE-файл был автоматически создан Microsoft(R) Visual Studio.
+################################################################################
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+/src/.editorconfig
+.idea
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
-
-cmake-build-debug/
-.idea/
-/lib/
+/.vs/
+/bracketsTest/.vs/
+*/Debug
+out/
+/bracketsTest/packages/
+*/x64/
+/cmake-build-debug/
+/bracketsTest/bracketsTest.sln
