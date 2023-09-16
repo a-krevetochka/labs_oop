@@ -26,10 +26,12 @@ bool isOrderOfTheBracketsCorrect(string bracketsString) {
         return false;
     }
     stack<char> bracketsOrder;
-    int counter{0};
-    for (int i = 0; !bracketsOrder.empty() && i < bracketsString.size(); ++i, ++counter) {
-        if (bracketsString.at(i) == '(') bracketsOrder.push('(');
+    bracketsOrder.push('(');
+    int counter{1};
+
+    for (; counter < bracketsString.size() && (!bracketsOrder.empty() || bracketsString.at(counter) == '(') ; ++counter) {
+        if (bracketsString.at(counter) == '(') bracketsOrder.push('(');
         else bracketsOrder.pop();
     }
-    return bracketsOrder.empty() && counter == bracketsString.size()-1;
+        return bracketsOrder.empty() && counter == bracketsString.size();
 }

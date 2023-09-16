@@ -1,4 +1,5 @@
-#include "pch.h"
+#include "gtest/gtest.h"
+#include "brackets.h"
 
 using namespace std;
 TEST(simple_correct_test, test1) {
