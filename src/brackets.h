@@ -6,7 +6,7 @@
 #include <iostream>
 bool isOrderOfTheBracketsCorrect(std::string bracketsString);
 void checkRowContainOnlyBrackets(std::string bracketsString);
-bool checkFirstSymbolIsOpeningBracket(std::string bracketsString);
+bool isFirstSymbolIsOpeningBracket(std::string bracketsString);
 
 
 #endif

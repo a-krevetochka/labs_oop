@@ -5,7 +5,7 @@
 
 using namespace std;
 
-bool checkFirstSymbolIsOpeningBracket(string bracketsString) {
+bool isFirstSymbolIsOpeningBracket(string bracketsString) {
 	return bracketsString.at(0) == '(';
 }
 
@@ -21,15 +21,15 @@ void checkRowContainOnlyBrackets(string bracketsString) {
 bool isOrderOfTheBracketsCorrect(string bracketsString) {
 
     checkRowContainOnlyBrackets(bracketsString);
-    bool isFirstSymbolIsOpeningBracket = checkFirstSymbolIsOpeningBracket(bracketsString);
-    if (!isFirstSymbolIsOpeningBracket) {
+    bool isFirstIsOpeningBracket = isFirstSymbolIsOpeningBracket(bracketsString);
+    if (!isFirstIsOpeningBracket) {
         return false;
     }
     stack<char> bracketsOrder;
-    for (char currentBracket : bracketsString) {
-        if (currentBracket == '(') bracketsOrder.push(currentBracket);
-        else if(currentBracket == ')' && !bracketsOrder.empty())bracketsOrder.pop();
-        else return false;
+    int counter{0};
+    for (int i = 0; !bracketsOrder.empty() && i < bracketsString.size(); ++i, ++counter) {
+        if (bracketsString.at(i) == '(') bracketsOrder.push('(');
+        else bracketsOrder.pop();
     }
-    return bracketsOrder.empty();
+    return bracketsOrder.empty() && counter == bracketsString.size()-1;
 }

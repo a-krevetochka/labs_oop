@@ -9,13 +9,7 @@ int main()
 {	
 	string inputString;
 	cin >> inputString;
-	try {
-		bool result = isOrderOfTheBracketsCorrect(inputString);
-		cout << boolalpha << result << endl;
-	}
-	catch (invalid_argument e) {
-		cout << e.what() << endl;
-		return 0;
-	}
+    bool result = isOrderOfTheBracketsCorrect(inputString);
+    cout << boolalpha << result << endl;
 	return 0;
 }
