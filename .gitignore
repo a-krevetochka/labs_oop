@@ -1,0 +1,17 @@
+﻿################################################################################
+# Данный GITIGNORE-файл был автоматически создан Microsoft(R) Visual Studio.
+################################################################################
+
+/src/.editorconfig
+.idea
+
+/.vs/
+/test/.vs/
+*/Debug
+out/
+/test/packages/
+*/x64/
+/cmake-build-debug/
+/test/bracketsTest.sln
+/test/lib/
+/build/
