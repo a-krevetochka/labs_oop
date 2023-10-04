@@ -1,6 +1,8 @@
-#include "octal.h"
+#include "../include/octal.h"
 #include <gtest/gtest.h>
+#include "string"
 #include <stdexcept>
+using namespace octal;
 
 
 class TestOperations : public ::testing::Test{
@@ -16,22 +18,37 @@ protected:
 };
 
 TEST_F(TestOperations, testPlus){
-    ASSERT_EQ("011", (octal1 + octal2)->getValue());
+    std::string result = (octal1 + octal2).getValue();
+
+    ASSERT_EQ("110", result);
 }
 
 TEST_F(TestOperations, testMinus){
-    ASSERT_EQ("27", (octal1 - octal2)->getValue());
+    std::string result = (octal1 - octal2).getValue();
+
+    ASSERT_EQ("72", result);
 }
 
-TEST_F(TestOperations, testLowerAndBigger) {
-    ASSERT_TRUE(octal2 < octal1);
-    ASSERT_TRUE(octal1 > octal2);
+TEST_F(TestOperations, testLower) {
+    bool result = octal2 < octal1;
+
+    ASSERT_TRUE(result);
+
+}
+
+TEST_F(TestOperations, testBigger){
+    bool result = octal1 > octal2;
+
+    ASSERT_TRUE(result);
 }
 
 TEST_F(TestOperations, testEqueals){
-    octal1.setValue("1");
-    octal2.setValue("1");
-    ASSERT_TRUE(octal1 == octal2);
+    Octal o1("1");
+    Octal o2("1");
+
+    bool result = o1 == o2;
+
+    ASSERT_TRUE(result);
 }
 
 TEST_F(TestOperations, startWithZero){
@@ -43,4 +60,20 @@ TEST_F(TestOperations, containsAnotherSymbols){
 }
 TEST_F(TestOperations, containsHigher7digits){
     ASSERT_THROW(octal1.setValue("018"), std::invalid_argument);
+}
+
+TEST_F(TestOperations, setterTest){
+    octal1.setValue("156");
+
+    std::string newValue = octal1.getValue();
+
+    ASSERT_EQ("156", newValue);
+}
+
+TEST_F(TestOperations, parametrized){
+    Octal octal3("101");
+
+    std::string value = octal1.getValue();
+
+    ASSERT_EQ("101", value);
 }

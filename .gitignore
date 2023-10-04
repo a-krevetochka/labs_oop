@@ -13,5 +13,5 @@ out/
 */x64/
 /cmake-build-debug/
 /test/bracketsTest.sln
-/test/lib/
+/lib/
 /build/
