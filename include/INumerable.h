@@ -20,7 +20,6 @@ namespace INumerable{
 
         virtual T operator=(const T& right) = 0;
 
-        virtual void print() = 0;
     };
 }
 

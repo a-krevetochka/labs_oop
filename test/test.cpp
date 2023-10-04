@@ -77,3 +77,13 @@ TEST_F(TestOperations, parametrized){
 
     ASSERT_EQ("101", value);
 }
+
+TEST_F(TestOperations, out){
+    testing::internal::CaptureStdout();
+
+    std::cout << octal1;
+
+    std::string output = testing::internal::GetCapturedStdout();
+
+    ASSERT_EQ("101", output);
+}

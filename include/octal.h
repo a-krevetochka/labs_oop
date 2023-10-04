@@ -30,7 +30,7 @@ namespace octal{
 
         ~Octal();
 
-        void print() override;
+        friend std::ostream &operator<<(std::ostream & ostream, const Octal &octal);
     };
 }
 

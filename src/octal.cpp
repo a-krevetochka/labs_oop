@@ -1,6 +1,7 @@
 #include<string>
 #include <stdexcept>
 #include <iostream>
+#include <cstdint>
 #include "octal.h"
 #include "algorithm"
 
@@ -194,8 +195,10 @@ bool Octal::operator==(const Octal &right) {
     return true;
 }
 
-void Octal::print() {
-    cout << this->getValue() << endl;
+
+std::ostream &octal::operator<<(ostream &stream, const Octal &octal) {
+    stream << octal.getValue();
+    return stream;
 }
 
 Octal::~Octal() = default;
