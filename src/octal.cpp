@@ -8,6 +8,8 @@
 const int ZERO_ASCII = 48;
 const int DIFFERENCE_BETWEEN_NUMBERS_SYSTEMS = 2;
 const int NEW_CATEGORY = 10;
+const int MINIMAL_SIZE_FOR_ZERO = 1;
+const int SEVEN_ASCII = 55;
 
 using namespace std;
 using namespace octal;
@@ -17,12 +19,12 @@ Octal::Octal() = default;
 void Octal::setValue(std::string parameter) {
     vector.clear();
 
-    if (parameter.at(0) == '0' && parameter.size() > 1) {
+    if (parameter.at(0) == '0' && parameter.size() > MINIMAL_SIZE_FOR_ZERO) {
         throw invalid_argument("The number can't start from 0");
     }
 
     for (int i = parameter.size() - 1; i >= 0; --i) {
-        if (!isdigit(parameter.at(i)) || parameter.at(i) > 55) {
+        if (!isdigit(parameter.at(i)) || parameter.at(i) > SEVEN_ASCII) {
             throw invalid_argument("octal numbers contain only digits from 0 to 7");
         }
         vector.push_back(parameter[i]);
@@ -61,7 +63,7 @@ Octal Octal::operator-(const Octal &right) {
     int memory{0};
     int index{0};
 
-    for (; index < lower.size(); ++index) { //сначала складываем до последнего знака меньшего числа
+    for (; index < lower.size(); ++index) {
         if (bigger.at(index) - memory < lower.at(index)) {
             currentDiff =
                     bigger.at(index) - lower.at(index) - memory + NEW_CATEGORY - DIFFERENCE_BETWEEN_NUMBERS_SYSTEMS;
@@ -105,21 +107,21 @@ Octal Octal::operator+(const Octal &right) {
     int memory{0};
     int index{0};
 
-    for (; index < lower.size(); ++index) { //сначала складываем до последнего знака меньшего числа
+    for (; index < lower.size(); ++index) {
         currentSum = lower.at(index) + bigger.at(index) - ZERO_ASCII * 2 +
-                     memory; // два числа складываем, вычитаем код по таблице аски, прибавляем значение из памяти
-        memory = 0; // так как значение из памяти взяли, обнуляем ее
+                     memory;
+        memory = 0;
         if (currentSum > 7) {
             result += (char) (currentSum + DIFFERENCE_BETWEEN_NUMBERS_SYSTEMS - NEW_CATEGORY +
-                              ZERO_ASCII); // значение после 7 отличаются от десятичной системы счисления на 2, eg: 7 + 5 = 12(decimal) 7 + 5 = 14(octal)
-            memory += 1; // записываем только единицы, десятки в память, значение в памяти не может превышать 1, тк при сложении 7 + 7 = 16 в восьмиричной
+                              ZERO_ASCII);
+            memory += 1;
         } else {
             result += (char) (currentSum + ZERO_ASCII);
         }
     }
 
     for (; index <
-           bigger.size(); ++index) { // если второе число оказалось больше, то к нему прибавляем значение из памяти до тех пор, пока можем, затем просто дописываем числа
+           bigger.size(); ++index) {
         currentSum = bigger.at(index) + memory - ZERO_ASCII;
         memory = 0;
         if (currentSum > 7) {
@@ -130,7 +132,7 @@ Octal Octal::operator+(const Octal &right) {
         }
     }
 
-    if (memory != 0) { // если в памяти еще что-то осталось, то это будет новый разряд
+    if (memory != 0) {
         result += (char) 1 + ZERO_ASCII;
     }
 
