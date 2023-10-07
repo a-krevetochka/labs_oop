@@ -6,7 +6,7 @@
 namespace octal{
     class Octal : INumerable::INumerable<Octal> {
     private:
-        Vector vector;
+        Vector value;
     public:
         Octal();
 

@@ -17,7 +17,7 @@ using namespace octal;
 Octal::Octal() = default;
 
 void Octal::setValue(std::string parameter) {
-    vector.clear();
+    value.clear();
 
     if (parameter.at(0) == '0' && parameter.size() > MINIMAL_SIZE_FOR_ZERO) {
         throw invalid_argument("The number can't start from 0");
@@ -27,7 +27,7 @@ void Octal::setValue(std::string parameter) {
         if (!isdigit(parameter.at(i)) || parameter.at(i) > SEVEN_ASCII) {
             throw invalid_argument("octal numbers contain only digits from 0 to 7");
         }
-        vector.push_back(parameter[i]);
+        value.push_back(parameter[i]);
     }
 }
 
@@ -38,8 +38,8 @@ Octal::Octal(std::string val) {
 std::string Octal::getValue() const {
     string result;
 
-    for (int i = 0; i < vector.get_size(); ++i) {
-        result += (char) vector[i];
+    for (int i = 0; i < value.get_size(); ++i) {
+        result += (char) value[i];
     }
 
     reverse(result.begin(), result.end());
@@ -96,10 +96,10 @@ Octal Octal::operator-(const Octal &right) {
 }
 
 Octal Octal::operator+(const Octal &right) {
-    string bigger = this->vector.get_size() >= right.vector.get_size() ? this->getValue() : right.getValue();
+    string bigger = this->value.get_size() >= right.value.get_size() ? this->getValue() : right.getValue();
     reverse(bigger.begin(), bigger.end());
 
-    string lower = this->vector.get_size() < right.vector.get_size() ? this->getValue() : right.getValue();
+    string lower = this->value.get_size() < right.value.get_size() ? this->getValue() : right.getValue();
     reverse(lower.begin(), lower.end());
 
     string result;
@@ -120,8 +120,7 @@ Octal Octal::operator+(const Octal &right) {
         }
     }
 
-    for (; index <
-           bigger.size(); ++index) {
+    for (; index < bigger.size(); ++index) {
         currentSum = bigger.at(index) + memory - ZERO_ASCII;
         memory = 0;
         if (currentSum > 7) {
@@ -142,16 +141,16 @@ Octal Octal::operator+(const Octal &right) {
 
 
 bool Octal::operator<(const Octal &right) {
-    if (vector.get_size() < right.vector.get_size()) {
+    if (value.get_size() < right.value.get_size()) {
         return true;
     }
 
-    if (vector.get_size() > right.vector.get_size()) {
+    if (value.get_size() > right.value.get_size()) {
         return false;
     }
 
-    for (int i = 0; i < vector.get_size(); ++i) {
-        if (vector[i] < right.vector[i]) {
+    for (int i = 0; i < value.get_size(); ++i) {
+        if (value[i] < right.value[i]) {
             return true;
         }
     }
@@ -160,16 +159,16 @@ bool Octal::operator<(const Octal &right) {
 }
 
 bool Octal::operator>(const Octal &right) {
-    if (vector.get_size() > right.vector.get_size()) {
+    if (value.get_size() > right.value.get_size()) {
         return true;
     }
 
-    if (vector.get_size() < right.vector.get_size()) {
+    if (value.get_size() < right.value.get_size()) {
         return false;
     }
 
-    for (int i = 0; i < vector.get_size(); ++i) {
-        if (vector[i] > right.vector[i]) {
+    for (int i = 0; i < value.get_size(); ++i) {
+        if (value[i] > right.value[i]) {
             return true;
         }
     }
@@ -178,18 +177,18 @@ bool Octal::operator>(const Octal &right) {
 }
 
 Octal Octal::operator=(const Octal &right) {
-    vector = right.vector;
+    value = right.value;
     return *this;
 }
 
 bool Octal::operator==(const Octal &right) {
-    if (vector.get_size() != right.vector.get_size()) {
+    if (value.get_size() != right.value.get_size()) {
         return false;
     }
 
-    for (int i = 0; i < vector.get_size(); ++i) {
+    for (int i = 0; i < value.get_size(); ++i) {
 
-        if (vector[i] != right.vector[i]) {
+        if (value[i] != right.value[i]) {
             return false;
         }
     }
