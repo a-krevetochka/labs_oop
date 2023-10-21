@@ -28,6 +28,8 @@ public:
 
     friend std::ostream& operator<<(std::ostream& out, BaseFigure*);
 
+    ~BaseFigure();
+
 protected:
     Vector<Point> _peaks;
 };

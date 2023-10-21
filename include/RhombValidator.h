@@ -9,6 +9,8 @@ public:
     bool isAllowedForType(const std::type_info &typeInfo) override;
 
     void validateFigure(Vector<Point> peaks) override;
+
+    ~RhombValidator() = default;
 };
 
 

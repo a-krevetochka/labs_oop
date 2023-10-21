@@ -21,6 +21,8 @@ public:
     void setPeaks(Vector<Point>) override;
 
     explicit operator double() const override;
+
+    ~Trapezoid() = default;
 };
 
 

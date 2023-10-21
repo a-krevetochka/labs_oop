@@ -30,3 +30,5 @@ std::ostream &operator<<(std::ostream &out, BaseFigure * baseFigure) {
     return out;
 }
 
+BaseFigure::~BaseFigure() = default;
+

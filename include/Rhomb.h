@@ -21,5 +21,6 @@ public:
 
     friend std::istream operator>>(std::istream& in, Rhomb& rhomb);
 
+    ~Rhomb() = default;
 };
 

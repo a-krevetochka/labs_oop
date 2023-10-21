@@ -27,4 +27,6 @@ public:
     friend std::ostream& operator<<(std::ostream& out, const Point& point);
 
     friend std::istream  operator>>(std::istream& is, Point& point);
+
+    ~Point() = default;
 };

@@ -21,5 +21,7 @@ public:
     void setPeaks(Vector<Point>) override;
 
     explicit operator double() const override;
+
+    ~Rectangle() = default;
 };
 
