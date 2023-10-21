@@ -23,6 +23,8 @@ public:
     explicit operator double() const override;
 
     ~Trapezoid() = default;
+
+    static Trapezoid & createFromPoints(Vector<Point>);
 };
 
 

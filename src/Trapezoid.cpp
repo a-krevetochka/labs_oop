@@ -25,7 +25,6 @@ bool Trapezoid::operator==(const BaseFigure &right) const {
 }
 
 Trapezoid::Trapezoid(Vector<Point> peaks){
-    FigureValidator::Validate(typeid(Trapezoid), peaks);
     _peaks = peaks;
 }
 
@@ -75,4 +74,9 @@ Trapezoid::operator double() const {
 void Trapezoid::setPeaks(Vector<Point> peaks) {
     FigureValidator::Validate(typeid(Trapezoid), peaks);
     _peaks = peaks;
+}
+
+Trapezoid &Trapezoid::createFromPoints(Vector<Point> peaks) {
+    FigureValidator::Validate(typeid(Trapezoid), peaks);
+    return *new Trapezoid(peaks);
 }

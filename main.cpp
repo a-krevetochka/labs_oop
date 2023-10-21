@@ -3,4 +3,7 @@
 #include "Rhomb.h"
 #include "RectangleValidator.h"
 #include "Trapezoid.h"
-int main(){}
+int main(){
+    Rectangle rectangle = Rectangle::createFromPoints({Point(1,2)});
+    Rhomb rhomb = Rhomb::createFromPoints({Point(1,2)});
+}

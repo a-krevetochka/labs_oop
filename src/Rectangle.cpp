@@ -8,7 +8,6 @@
 Rectangle::Rectangle() = default;
 
 Rectangle::Rectangle(Vector<Point> peaks){
-    FigureValidator::Validate(typeid(Rectangle), peaks);
     _peaks = peaks;
 }
 
@@ -66,6 +65,12 @@ std::istream operator>>(std::istream &in, Rectangle &rectangle) {
 void Rectangle::setPeaks(Vector<Point> peaks) {
     FigureValidator::Validate(typeid(Rectangle), peaks);
     _peaks = peaks;
+}
+
+Rectangle& Rectangle::createFromPoints(Vector<Point> peaks) {
+    FigureValidator::Validate(typeid(Rectangle), peaks);
+    Rectangle rectangle(peaks);
+    return rectangle;
 }
 
 

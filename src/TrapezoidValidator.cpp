@@ -21,7 +21,7 @@ void TrapezoidValidator::validateFigure(Vector<Point> peaks) {
     );
 
     if (footing1 == footing2){
-        throw std::invalid_argument("footings of _trapezoid have to be not equals");
+        throw std::invalid_argument("footings of trapezoid have to be not equals");
     }
 
     if (peaks.at(0).getY() != peaks.at(3).getY() || peaks.at(1).getY() != peaks.at(2).getY() || (peaks.at(0).getX() == peaks.at(1).getX() && peaks.at(2).getX() == peaks.at(3).getX())){

@@ -39,7 +39,6 @@ bool Rhomb::operator==(const BaseFigure &right) const {
 }
 
 Rhomb::Rhomb(Vector<Point> peaks) {
-    FigureValidator::Validate(typeid(Rhomb), peaks);
     _peaks = peaks;
 }
 
@@ -67,5 +66,10 @@ std::istream operator>>(std::istream &in, Rhomb &rhomb) {
 void Rhomb::setPeaks(Vector<Point> peaks) {
     FigureValidator::Validate(typeid(Rhomb), peaks);
     _peaks = peaks;
+}
+
+Rhomb &Rhomb::createFromPoints(Vector<Point> peaks) {
+    FigureValidator::Validate(typeid(Rhomb), peaks);
+    return *new Rhomb(peaks);
 }
 

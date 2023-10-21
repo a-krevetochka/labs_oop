@@ -23,5 +23,7 @@ public:
     explicit operator double() const override;
 
     ~Rectangle() = default;
+
+    static Rectangle& createFromPoints(Vector<Point>);
 };
 
