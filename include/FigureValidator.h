@@ -7,7 +7,7 @@
 #include "RhombValidator.h"
 #include "TrapezoidValidator.h"
 
-class FigureValidator : public IFigureValidator{
+class FigureValidator{
     static Vector<IFigureValidator*> _validators;
 
 public:

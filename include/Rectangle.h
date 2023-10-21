@@ -2,9 +2,9 @@
 // Created by meteo on 18.10.2023.
 //
 #pragma once
-#include "BaseFigure.h"
+#include "Paralellogram.h"
 
-class Rectangle : public BaseFigure{
+class Rectangle : public Paralellogram{
 public:
     Rectangle();
 
@@ -12,7 +12,7 @@ public:
 
     bool operator==(const BaseFigure &right)const override;
 
-    BaseFigure& operator=(BaseFigure const &right) override;
+    Paralellogram& operator=(BaseFigure const &right) override;
 
     friend std::ostream& operator<<(std::ostream& out, const Rectangle& rectangle);
 

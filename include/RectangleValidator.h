@@ -3,7 +3,8 @@
 //
 #pragma once
 #include "IFigureValidator.h"
-class RectangleValidator : public IFigureValidator {
+#include "ParalellogramValidator.h"
+class RectangleValidator : public ParalellogramValidator {
 public:
     void validateFigure(Vector<Point> peaks) override;
 

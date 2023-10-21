@@ -5,7 +5,7 @@
 #include "Rhomb.h"
 #include "cmath"
 
-BaseFigure &Rhomb::operator=(const BaseFigure &right) {
+Paralellogram &Rhomb::operator=(const BaseFigure &right) {
     if (const Rhomb *pRhomb = dynamic_cast<const Rhomb *>(&right)) {
         _peaks = right.getPeaks();
     } else {

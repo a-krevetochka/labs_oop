@@ -11,7 +11,7 @@ Rectangle::Rectangle(Vector<Point> peaks){
     _peaks = peaks;
 }
 
-BaseFigure &Rectangle::operator=(const BaseFigure &right) {
+Paralellogram &Rectangle::operator=(const BaseFigure &right) {
     if (const Rectangle* rectangle = dynamic_cast<const Rectangle*>(&right)){
         _peaks = right.getPeaks();
     } else{

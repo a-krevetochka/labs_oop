@@ -3,8 +3,9 @@
 //
 #pragma once
 #include "IFigureValidator.h"
+#include "ParalellogramValidator.h"
 
-class RhombValidator : public IFigureValidator{
+class RhombValidator : public ParalellogramValidator{
 public:
     bool isAllowedForType(const std::type_info &typeInfo) override;
 

@@ -11,9 +11,7 @@ bool RhombValidator::isAllowedForType(const std::type_info &typeInfo) {
 }
 
 void RhombValidator::validateFigure(Vector<Point> peaks) {
-    if (peaks.size() != 4) {
-        throw std::invalid_argument("rectangle need only 4 points");
-    }
+    ParalellogramValidator::validateFigure(peaks);
     Vector<double> lengths;
     for (int indexOfPeak = 0; indexOfPeak < peaks.size() - 1; ++indexOfPeak) {
         double currentLength = std::sqrt(pow(peaks.at(indexOfPeak).getX() - peaks.at(indexOfPeak + 1).getX(), 2) +
@@ -28,10 +26,6 @@ void RhombValidator::validateFigure(Vector<Point> peaks) {
         if (lengths.at(index) != lengths[0]){
             throw std::invalid_argument("Rhomb has only equals sides");
         }
-    }
-
-    if (peaks.at(1) - peaks.at(0) != peaks.at(2) - peaks.at(3) || peaks.at(2) - peaks.at(1) != peaks.at(3) - peaks.at(0)){
-        throw std::invalid_argument("rectangle sides has to be parallel");
     }
 
     Point diag1 = peaks.at(2) - peaks.at(0);

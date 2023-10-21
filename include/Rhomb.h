@@ -3,13 +3,14 @@
 //
 #pragma once
 #include "BaseFigure.h"
-class Rhomb : public BaseFigure{
+#include "Paralellogram.h"
+class Rhomb : public Paralellogram{
 public:
     Rhomb();
 
     Rhomb(Vector<Point>);
 
-    BaseFigure& operator=(BaseFigure const &right) override;
+    Paralellogram& operator=(BaseFigure const &right) override;
 
     explicit operator double() const override;
 
