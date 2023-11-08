@@ -9,7 +9,7 @@ protected:
         _rectangle.setPeaks({Point(1, 1), Point(1, 3), Point(3, 3), Point(3, 1)});
     }
     void TearDown() override{}
-    Rectangle _rectangle;
+    Rectangle<int> _rectangle;
 };
 
 TEST_F(RectangleTest, areaTest){
@@ -23,16 +23,16 @@ TEST_F(RectangleTest, centerOfRoundingTest){
 }
 
 TEST_F(RectangleTest, setterTest){
-    Vector<Point> peaks = {Point(2, 2), Point(2, 4), Point(4, 4), Point(4, 2)};
+    Vector<Point<int>> peaks = {Point(2, 2), Point(2, 4), Point(4, 4), Point(4, 2)};
 
     _rectangle.setPeaks(peaks);
 
-    Vector<Point> result = _rectangle.getPeaks();
+    Vector<Point<int>> result = _rectangle.getPeaks();
     ASSERT_EQ(peaks, result);
 }
 
 TEST_F(RectangleTest, equalsTest){
-    Vector<Point> peaks = {Point(2, 2), Point(2, 4), Point(4, 4), Point(4, 2)};
+    Vector<Point<int>> peaks = {Point(2, 2), Point(2, 4), Point(4, 4), Point(4, 2)};
     Rectangle rectangle(peaks);
 
     bool result = _rectangle == rectangle;
@@ -41,10 +41,10 @@ TEST_F(RectangleTest, equalsTest){
 }
 
 TEST_F(RectangleTest, parametrizeConstructorTest){
-    Vector<Point> peaks = {Point(2, 2), Point(2, 4), Point(4, 4), Point(4, 2)};
+    Vector<Point<int>> peaks = {Point(2, 2), Point(2, 4), Point(4, 4), Point(4, 2)};
     Rectangle rectangle(peaks);
 
-    Vector<Point> result = rectangle.getPeaks();
+    Vector<Point<int>> result = rectangle.getPeaks();
 
     ASSERT_EQ(peaks, result);
 }

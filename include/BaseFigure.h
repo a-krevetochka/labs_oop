@@ -6,23 +6,25 @@
 #include "Point.h"
 #include "Vector.h"
 #include "FigureValidator.h"
+
+template<class T>
 class BaseFigure {
 public:
     BaseFigure();
 
-    explicit BaseFigure(Vector<Point>);
+    explicit BaseFigure(Vector<Point<T>>);
 
-    Point centerOfRounding();
+    Point<T> centerOfRounding();
 
-    [[nodiscard]] Vector<Point> getPeaks() const{
+    [[nodiscard]] Vector<Point<T>> getPeaks() const{
         return _peaks;
     }
 
-    virtual BaseFigure& operator=(BaseFigure const &right) = 0;
+    virtual BaseFigure<T>& operator=(BaseFigure<T> const &right) = 0;
 
     virtual explicit operator double() const = 0;
 
-    virtual void setPeaks(Vector<Point>) = 0;
+    virtual void setPeaks(Vector<Point<T>>) = 0;
 
     virtual bool operator==(const BaseFigure &right)const = 0;
 
@@ -31,6 +33,6 @@ public:
     ~BaseFigure();
 
 protected:
-    Vector<Point> _peaks;
+    Vector<Point<T>> _peaks;
 };
 

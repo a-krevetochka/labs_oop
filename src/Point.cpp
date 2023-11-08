@@ -1,32 +1,39 @@
 #include "Point.h"
 
-Point::Point()=default;
-
-Point::Point(double x, double y) {
+template<class T>
+Point<T>::Point(T x, T y) {
     _x = x;
     _y = y;
 }
 
-Point Point::operator+(Point &right) const {
+template<class T>
+Point<T>::Point()=default;
+
+template<class T>
+Point<T> Point<T>::operator+(Point &right) const {
     return *(new Point((this->_x + right._x), (this->_y + right._y)));
 }
 
-Point& Point::operator=(Point const &right){
+template<class T>
+Point<T>& Point<T>::operator=(Point const &right){
     this->_x = right._x;
     this->_y = right._y;
     return *this;
 }
 
-std::ostream &operator<<(std::ostream &out, const Point &point) {
+template<class T>
+std::ostream &operator<<(std::ostream &out, const Point<T> &point) {
     out << "x: " << point._x << " y: " << point._y;
     return out;
 }
 
-Point &Point::operator-(const Point &right) const {
+template<class T>
+Point<T> &Point<T>::operator-(const Point &right) const {
     return *(new Point((this->_x - right._x), (this->_y - right._y)));
 }
 
-std::istream operator>>(std::istream &is, Point &point) {
+template<class T>
+std::istream operator>>(std::istream &is, Point<T> &point) {
     std::cout << "enter x:" << std::endl;
     is >> point._x;
     std::cout << "enter y:" << std::endl;
@@ -34,24 +41,29 @@ std::istream operator>>(std::istream &is, Point &point) {
     return std::istream(nullptr);
 }
 
-bool Point::operator==(const Point &right) const {
+template<class T>
+bool Point<T>::operator==(const Point &right) const {
     if (this->_x == right._x && this->_y == right._y){
         return true;
     }
     return false;
 }
 
-double Point::getX() const {
+template<class T>
+T Point<T>::getX() const {
     return _x;
 }
 
-double Point::getY() const {
+template<class T>
+T Point<T>::getY() const {
     return _y;
 }
 
-Point &Point::operator*(int right) const {
+template<class T>
+Point<T> &Point<T>::operator*(int right) const {
     return *(new Point(this->_x * right, this->_y * right));
 }
+
 
 
 

@@ -9,7 +9,7 @@ protected:
         _trapezoid.setPeaks({Point(0, 0), Point(2, 6), Point(8, 6), Point(10, 0)});
     }
     void TearDown() override{}
-    Trapezoid _trapezoid;
+    Trapezoid<int> _trapezoid;
 };
 
 TEST_F(TrapezoidTest, areaTest){
@@ -23,16 +23,16 @@ TEST_F(TrapezoidTest, centerOfRoundingTest){
 }
 
 TEST_F(TrapezoidTest, setterTest){
-    Vector<Point> peaks = {Point(1, 1), Point(3, 7), Point(9, 7), Point(11, 1)};
+    Vector<Point<int>> peaks = {Point(1, 1), Point(3, 7), Point(9, 7), Point(11, 1)};
 
     _trapezoid.setPeaks(peaks);
 
-    Vector<Point> result = _trapezoid.getPeaks();
+    Vector<Point<int>> result = _trapezoid.getPeaks();
     ASSERT_EQ(peaks, result);
 }
 
 TEST_F(TrapezoidTest, equalsTest){
-    Vector<Point> peaks = {Point(1, 1), Point(3, 7), Point(9, 7), Point(11, 1)};
+    Vector<Point<int>> peaks = {Point(1, 1), Point(3, 7), Point(9, 7), Point(11, 1)};
     Trapezoid trapezoid(peaks);
 
     bool result = _trapezoid == trapezoid;
@@ -41,10 +41,10 @@ TEST_F(TrapezoidTest, equalsTest){
 }
 
 TEST_F(TrapezoidTest, parametrizeConstructorTest){
-    Vector<Point> peaks = {Point(1, 1), Point(3, 7), Point(9, 7), Point(11, 1)};
+    Vector<Point<int>> peaks = {Point(1, 1), Point(3, 7), Point(9, 7), Point(11, 1)};
     Trapezoid trapezoid(peaks);
 
-    Vector<Point> result = trapezoid.getPeaks();
+    Vector<Point<int>> result = trapezoid.getPeaks();
 
     ASSERT_EQ(peaks, result);
 }

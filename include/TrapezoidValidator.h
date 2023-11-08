@@ -3,9 +3,11 @@
 //
 #pragma once
 #include "IFigureValidator.h"
-class TrapezoidValidator : public IFigureValidator{
+
+template<class T>
+class TrapezoidValidator : public IFigureValidator<T>{
 public:
-    void validateFigure(Vector<Point> peaks) override;
+    void validateFigure(Vector<Point<T>> peaks) override;
 
     bool isAllowedForType(const std::type_info &typeInfo) override;
 

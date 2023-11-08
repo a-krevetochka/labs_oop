@@ -4,27 +4,28 @@
 #pragma once
 #include "BaseFigure.h"
 
-class Trapezoid : public BaseFigure{
+template<class T>
+class Trapezoid : public BaseFigure<T>{
 public:
     Trapezoid();
 
-    explicit Trapezoid(Vector<Point>);
+    explicit Trapezoid(Vector<Point<T>>);
 
-    bool operator==(const BaseFigure &right)const override;
+    bool operator==(const BaseFigure<T> &right)const override;
 
-    BaseFigure& operator=(BaseFigure const &right) override;
+    BaseFigure<T>& operator=(BaseFigure<T> const &right) override;
 
-    friend std::ostream& operator<<(std::ostream& out, const Trapezoid& trapezoid);
+    friend std::ostream& operator<<(std::ostream& out, const Trapezoid<T>& trapezoid);
 
-    friend std::istream operator>>(std::istream& in, Trapezoid& rectangle);
+    friend std::istream operator>>(std::istream& in, Trapezoid<T>& rectangle);
 
-    void setPeaks(Vector<Point>) override;
+    void setPeaks(Vector<Point<T>>) override;
 
     explicit operator double() const override;
 
     ~Trapezoid() = default;
 
-    static Trapezoid & createFromPoints(Vector<Point>);
+    static Trapezoid & createFromPoints(Vector<Point<T>>);
 };
 
 

@@ -4,26 +4,27 @@
 #pragma once
 #include "Paralellogram.h"
 
-class Rectangle : public Paralellogram{
+template<class T>
+class Rectangle : public Paralellogram<T>{
 public:
     Rectangle();
 
-    explicit Rectangle(Vector<Point>);
+    explicit Rectangle(Vector<Point<T>>);
 
-    bool operator==(const BaseFigure &right)const override;
+    bool operator==(const BaseFigure<T> &right)const override;
 
-    Paralellogram& operator=(BaseFigure const &right) override;
+    Paralellogram<T>& operator=(BaseFigure<T> const &right) override;
 
     friend std::ostream& operator<<(std::ostream& out, const Rectangle& rectangle);
 
     friend std::istream operator>>(std::istream& in, Rectangle& rectangle);
 
-    void setPeaks(Vector<Point>) override;
+    void setPeaks(Vector<Point<T>>) override;
 
     explicit operator double() const override;
 
     ~Rectangle() = default;
 
-    static Rectangle& createFromPoints(Vector<Point>);
+    static Rectangle& createFromPoints(Vector<Point<T>>);
 };
 

@@ -5,25 +5,29 @@
 #include "Rectangle.h"
 #include <cmath>
 
-Rectangle::Rectangle() = default;
+template<class T>
+Rectangle<T>::Rectangle() = default;
 
-Rectangle::Rectangle(Vector<Point> peaks){
-    _peaks = peaks;
+template<class T>
+Rectangle<T>::Rectangle(Vector<Point<T>> peaks){
+    this->_peaks = peaks;
 }
 
-Paralellogram &Rectangle::operator=(const BaseFigure &right) {
+template<class T>
+Paralellogram<T> &Rectangle<T>::operator=(const BaseFigure<T> &right) {
     if (const Rectangle* rectangle = dynamic_cast<const Rectangle*>(&right)){
-        _peaks = right.getPeaks();
+        this->_peaks = right.getPeaks();
     } else{
         throw std::exception();
     }
 }
 
-bool Rectangle::operator==(const BaseFigure &right) const {
+template<class T>
+bool Rectangle<T>::operator==(const BaseFigure<T> &right) const {
     if (const Rectangle* rectangle = dynamic_cast<const Rectangle*>(&right)){
-        Point difference = _peaks.at(0) - rectangle->_peaks.at(0);
-        for (int indexOfPeak = 1; indexOfPeak < _peaks.size(); ++indexOfPeak) {
-            Point currentDifference = _peaks.at(indexOfPeak) - rectangle->_peaks.at(indexOfPeak);
+        Point difference = this->_peaks.at(0) - rectangle->_peaks.at(0);
+        for (int indexOfPeak = 1; indexOfPeak < this->_peaks.size(); ++indexOfPeak) {
+            Point currentDifference = this->_peaks.at(indexOfPeak) - rectangle->_peaks.at(indexOfPeak);
             if (!(currentDifference == difference)){
                 return false;
             }
@@ -36,14 +40,16 @@ bool Rectangle::operator==(const BaseFigure &right) const {
     return false;
 }
 
-Rectangle::operator double() const {
-    Point firstSide = _peaks.at(0) - _peaks.at(1);
-    Point secondSide = _peaks.at(1) - _peaks.at(2);
+template<class T>
+Rectangle<T>::operator double() const {
+    Point firstSide = this->_peaks.at(0) - this->_peaks.at(1);
+    Point secondSide = this->_peaks.at(1) - this->_peaks.at(2);
     double area = sqrt(pow(firstSide.getX(), 2) + pow(firstSide.getY(), 2)) * sqrt(pow(secondSide.getX(), 2) + pow(secondSide.getY(), 2));
     return area;
 }
 
-std::ostream &operator<<(std::ostream &out, const Rectangle &rectangle) {
+template<class T>
+std::ostream &operator<<(std::ostream &out, const Rectangle<T> &rectangle) {
     std::cout << "Rectangle" << std::endl;
     for (int indexOfPeak = 0; indexOfPeak < rectangle._peaks.size(); ++indexOfPeak) {
         out << "peak: " << indexOfPeak << " {" << rectangle._peaks.at(indexOfPeak) << "}" << std::endl;
@@ -51,24 +57,27 @@ std::ostream &operator<<(std::ostream &out, const Rectangle &rectangle) {
     return out;
 }
 
-std::istream operator>>(std::istream &in, Rectangle &rectangle) {
+template<class T>
+std::istream operator>>(std::istream &in, Rectangle<T> &rectangle) {
     for (int indexOfPeak = 0; indexOfPeak < 4; ++indexOfPeak) {
         std::cout << "enter coordinates for peak: " << indexOfPeak << std::endl;
-        Point point;
+        Point<T> point;
         in >> point;
         rectangle._peaks.push_back(point);
     }
-    FigureValidator::Validate(typeid(Rectangle), rectangle._peaks);
+    FigureValidator<T>::Validate(typeid(Rectangle<T>), rectangle._peaks);
     return std::istream(nullptr);
 }
 
-void Rectangle::setPeaks(Vector<Point> peaks) {
-    FigureValidator::Validate(typeid(Rectangle), peaks);
-    _peaks = peaks;
+template<class T>
+void Rectangle<T>::setPeaks(Vector<Point<T>> peaks) {
+    FigureValidator<T>::Validate(typeid(Rectangle), peaks);
+    this->_peaks = peaks;
 }
 
-Rectangle& Rectangle::createFromPoints(Vector<Point> peaks) {
-    FigureValidator::Validate(typeid(Rectangle), peaks);
+template<class T>
+Rectangle<T>& Rectangle<T>::createFromPoints(Vector<Point<T>> peaks) {
+    FigureValidator<T>::Validate(typeid(Rectangle), peaks);
     Rectangle rectangle(peaks);
     return rectangle;
 }

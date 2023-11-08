@@ -6,7 +6,8 @@
 #include "cmath"
 #include "Trapezoid.h"
 
-void TrapezoidValidator::validateFigure(Vector<Point> peaks) {
+template<class T>
+void TrapezoidValidator<T>::validateFigure(Vector<Point<T>> peaks) {
     if (peaks.size() != 4) {
         throw std::invalid_argument("_trapezoid need only 4 points");
     }
@@ -29,6 +30,7 @@ void TrapezoidValidator::validateFigure(Vector<Point> peaks) {
     }
 }
 
-bool TrapezoidValidator::isAllowedForType(const std::type_info &typeInfo) {
-    return typeid(Trapezoid) == typeInfo;
+template<class T>
+bool TrapezoidValidator<T>::isAllowedForType(const std::type_info &typeInfo) {
+    return typeid(Trapezoid<T>) == typeInfo;
 }

@@ -4,9 +4,11 @@
 #pragma once
 #include "IFigureValidator.h"
 #include "ParalellogramValidator.h"
-class RectangleValidator : public ParalellogramValidator {
+
+template<class T>
+class RectangleValidator : public ParalellogramValidator<T> {
 public:
-    void validateFigure(Vector<Point> peaks) override;
+    void validateFigure(Vector<Point<T>> peaks) override;
 
     bool isAllowedForType(const std::type_info& typeInfo) override;
 

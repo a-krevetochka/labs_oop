@@ -6,11 +6,13 @@
 #include "Paralellogram.h"
 #include "cmath"
 
-bool ParalellogramValidator::isAllowedForType(const std::type_info &typeInfo) {
-    return typeid(Paralellogram) == typeInfo;
+template<class T>
+bool ParalellogramValidator<T>::isAllowedForType(const std::type_info &typeInfo) {
+    return typeid(Paralellogram<T>) == typeInfo;
 }
 
-void ParalellogramValidator::validateFigure(Vector<Point> peaks) {
+template<class T>
+void ParalellogramValidator<T>::validateFigure(Vector<Point<T>> peaks) {
     if (peaks.size() != 4) {
         throw std::invalid_argument("Paralellogram need only 4 points");
     }
@@ -31,4 +33,5 @@ void ParalellogramValidator::validateFigure(Vector<Point> peaks) {
     }
 }
 
-ParalellogramValidator::ParalellogramValidator() {}
+template<class T>
+ParalellogramValidator<T>::ParalellogramValidator() = default;

@@ -7,13 +7,16 @@
 #include "Rhomb.h"
 #include "Trapezoid.h"
 
-BaseFigure::BaseFigure() = default;
+template<class T>
+BaseFigure<T>::BaseFigure() = default;
 
-BaseFigure::BaseFigure(Vector<Point> peaks) {
+template<class T>
+BaseFigure<T>::BaseFigure(Vector<Point<T>> peaks) {
     _peaks = peaks;
 }
 
-Point BaseFigure::centerOfRounding() {
+template<class T>
+Point<T> BaseFigure<T>::centerOfRounding() {
     double sum_x = 0.0;
     double sum_y = 0.0;
     for (int index = 0; index < _peaks.size(); ++index) {
@@ -23,12 +26,14 @@ Point BaseFigure::centerOfRounding() {
     return *new Point(sum_x / (double) _peaks.size(), sum_y / (double) _peaks.size());
 }
 
-std::ostream &operator<<(std::ostream &out, BaseFigure * baseFigure) {
+template<class T>
+std::ostream &operator<<(std::ostream &out, BaseFigure<T>* baseFigure) {
     for (int indexOfPeak = 0; indexOfPeak < baseFigure->_peaks.size(); ++indexOfPeak) {
         out << "peak: " << indexOfPeak << " {" << baseFigure->_peaks.at(indexOfPeak) << "}" << std::endl;
     }
     return out;
 }
 
-BaseFigure::~BaseFigure() = default;
+template<class T>
+BaseFigure<T>::~BaseFigure() = default;
 

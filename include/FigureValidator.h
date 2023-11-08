@@ -7,10 +7,11 @@
 #include "RhombValidator.h"
 #include "TrapezoidValidator.h"
 
+template<class T>
 class FigureValidator{
-    static Vector<IFigureValidator*> _validators;
+    static Vector<IFigureValidator<T>> _validators;
 
 public:
-    static void Validate(const std::type_info &, Vector<Point>);
+    static void Validate(const std::type_info &, Vector<Point<T>>);
 };
 

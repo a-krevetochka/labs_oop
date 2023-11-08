@@ -1,32 +1,33 @@
 #pragma once
 #include "iostream"
 
+template<class T>
 class Point{
 private:
-    double _x;
-    double _y;
+    T _x;
+    T _y;
 public:
     Point();
 
-    Point(double, double);
+    Point(T, T);
 
-    Point operator+(Point &right) const;
+    Point<T> operator+(Point<T> &right) const;
 
-    Point& operator=(Point const &right);
+    Point<T>& operator=(Point<T> const &right);
 
-    Point& operator-(Point const &right) const;
+    Point<T>& operator-(Point<T> const &right) const;
 
-    Point& operator*(int right) const;
+    Point<T>& operator*(int right) const;
 
-    bool operator==(Point const &right) const;
+    bool operator==(Point<T> const &right) const;
 
-    [[nodiscard]] double getX() const;
+    [[nodiscard]] T getX() const;
 
-    [[nodiscard]] double getY() const;
+    [[nodiscard]] T getY() const;
 
-    friend std::ostream& operator<<(std::ostream& out, const Point& point);
+    friend std::ostream& operator<<(std::ostream& out, const Point<T>& point);
 
-    friend std::istream  operator>>(std::istream& is, Point& point);
+    friend std::istream  operator>>(std::istream& is, Point<T>& point);
 
     ~Point() = default;
 };

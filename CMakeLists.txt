@@ -2,9 +2,9 @@
 project(lab_rab3)
 
 set(CMAKE_CXX_STANDARD 20)
-#set(CMAKE_CXX_STANDARD_REQUIRED ON)
-#
-#add_compile_options(-g)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+add_compile_options(-g)
 
 set(GOOGLETEST_VERSION 1.14.0)
 

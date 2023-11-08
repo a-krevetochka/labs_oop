@@ -6,12 +6,14 @@
 #include "Rhomb.h"
 #include "cmath"
 
-bool RhombValidator::isAllowedForType(const std::type_info &typeInfo) {
-    return typeid(Rhomb) == typeInfo;
+template<class T>
+bool RhombValidator<T>::isAllowedForType(const std::type_info &typeInfo) {
+    return typeid(Rhomb<T>) == typeInfo;
 }
 
-void RhombValidator::validateFigure(Vector<Point> peaks) {
-    ParalellogramValidator::validateFigure(peaks);
+template<class T>
+void RhombValidator<T>::validateFigure(Vector<Point<T>> peaks) {
+    ParalellogramValidator<T>::validateFigure(peaks);
     Vector<double> lengths;
     for (int indexOfPeak = 0; indexOfPeak < peaks.size() - 1; ++indexOfPeak) {
         double currentLength = std::sqrt(pow(peaks.at(indexOfPeak).getX() - peaks.at(indexOfPeak + 1).getX(), 2) +

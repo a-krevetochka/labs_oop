@@ -6,9 +6,10 @@
 #include "Vector.h"
 #include "Point.h"
 
+template<class T>
 class IFigureValidator{
 public:
-    virtual void validateFigure(Vector<Point> peaks) = 0;
+    virtual void validateFigure(Vector<Point<T>> peaks) = 0;
 
     virtual bool isAllowedForType(const std::type_info& typeInfo) = 0;
 };

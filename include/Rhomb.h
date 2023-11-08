@@ -4,26 +4,28 @@
 #pragma once
 #include "BaseFigure.h"
 #include "Paralellogram.h"
-class Rhomb : public Paralellogram{
+
+template<class T>
+class Rhomb : public Paralellogram<T>{
 public:
     Rhomb();
 
-    Rhomb(Vector<Point>);
+    explicit Rhomb(Vector<Point<T>>);
 
-    Paralellogram& operator=(BaseFigure const &right) override;
+    Rhomb<T>& operator=(BaseFigure<T> const &right) override;
 
     explicit operator double() const override;
 
-    bool operator==(const BaseFigure &right)const override;
+    bool operator==(const BaseFigure<T> &right)const override;
 
-    void setPeaks(Vector<Point>) override;
+    void setPeaks(Vector<Point<T>>) override;
 
-    friend std::ostream& operator<<(std::ostream& out, const Rhomb& rhomb);
+    friend std::ostream& operator<<(std::ostream& out, const Rhomb<T>& rhomb);
 
-    friend std::istream operator>>(std::istream& in, Rhomb& rhomb);
+    friend std::istream operator>>(std::istream& in, Rhomb<T>& rhomb);
 
     ~Rhomb() = default;
 
-    static Rhomb& createFromPoints(Vector<Point>);
+    static Rhomb<T>& createFromPoints(Vector<Point<T>>);
 };
 

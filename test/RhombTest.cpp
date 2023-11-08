@@ -9,7 +9,7 @@ protected:
         _rhomb.setPeaks({Point(1, 1), Point(1, 3), Point(3, 3), Point(3, 1)});
     }
     void TearDown() override{}
-    Rhomb _rhomb;
+    Rhomb<int> _rhomb;
 };
 
 TEST_F(rhombTest, areaTest){
@@ -23,16 +23,16 @@ TEST_F(rhombTest, centerOfRoundingTest){
 }
 
 TEST_F(rhombTest, setterTest){
-    Vector<Point> peaks = {Point(2, 2), Point(2, 4), Point(4, 4), Point(4, 2)};
+    Vector<Point<int>> peaks = {Point(2, 2), Point(2, 4), Point(4, 4), Point(4, 2)};
 
     _rhomb.setPeaks(peaks);
 
-    Vector<Point> result = _rhomb.getPeaks();
+    Vector<Point<int>> result = _rhomb.getPeaks();
     ASSERT_EQ(peaks, result);
 }
 
 TEST_F(rhombTest, equalsTest){
-    Vector<Point> peaks = {Point(2, 2), Point(2, 4), Point(4, 4), Point(4, 2)};
+    Vector<Point<int>> peaks = {Point(2, 2), Point(2, 4), Point(4, 4), Point(4, 2)};
     Rhomb rhomb(peaks);
 
     bool result = _rhomb == rhomb;
@@ -41,7 +41,7 @@ TEST_F(rhombTest, equalsTest){
 }
 
 TEST_F(rhombTest, parametrizeConstructorTest){
-    Vector<Point> peaks = {Point(2, 2), Point(2, 4), Point(4, 4), Point(4, 2)};
+    Vector<Point<int>> peaks = {Point(2, 2), Point(2, 4), Point(4, 4), Point(4, 2)};
     Rhomb rhomb(peaks);
 
     ASSERT_EQ(peaks, rhomb.getPeaks());

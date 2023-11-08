@@ -4,13 +4,14 @@
 #pragma once
 #include "BaseFigure.h"
 
-class Paralellogram : public BaseFigure{
+template<class T>
+class Paralellogram : public BaseFigure<T>{
 
-    virtual Paralellogram& operator=(BaseFigure const &right) = 0;
+    virtual Paralellogram& operator=(BaseFigure<T> const &right) = 0;
 
     virtual explicit operator double() const = 0;
 
-    virtual void setPeaks(Vector<Point>) = 0;
+    virtual void setPeaks(Vector<Point<T>>) = 0;
 
-    virtual bool operator==(const BaseFigure &right)const = 0;
+    virtual bool operator==(const BaseFigure<T> &right)const = 0;
 };

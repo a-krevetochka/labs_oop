@@ -5,11 +5,12 @@
 #include "IFigureValidator.h"
 #include "ParalellogramValidator.h"
 
-class RhombValidator : public ParalellogramValidator{
+template<class T>
+class RhombValidator : public ParalellogramValidator<T>{
 public:
     bool isAllowedForType(const std::type_info &typeInfo) override;
 
-    void validateFigure(Vector<Point> peaks) override;
+    void validateFigure(Vector<Point<T>> peaks) override;
 
     ~RhombValidator() = default;
 };
