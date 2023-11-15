@@ -10,32 +10,13 @@
 #include "ConstForwardIterator.h"
 #include "unidirectionalList.h"
 
-struct SomeStruct {
-    char buffer[1024];
-};
-
-void test1() {
-    auto begin = std::chrono::high_resolution_clock::now();
-    std::list<SomeStruct> my_list;
-    for (int i = 0; i < 500000; i++)
-        my_list.push_back(SomeStruct());
-    for (int i = 0; i < 500000; i++)
-        my_list.erase(my_list.begin());
-    auto end = std::chrono::high_resolution_clock::now();
-    std::cout << "test1: " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << std::endl;
+long factorial(int n) {
+    if (n == 0) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
 }
-
-void test2() {
-    auto begin = std::chrono::high_resolution_clock::now();
-    std::list<SomeStruct, MapAllocator<SomeStruct>> my_list;
-    for (int i = 0; i < 500000; i++)
-        my_list.push_back(SomeStruct());
-    for (int i = 0; i < 500000; i++)
-        my_list.erase(my_list.begin());
-    auto end = std::chrono::high_resolution_clock::now();
-    std::cout << "test2: " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << std::endl;
-}
-
 
 int main() {
     std::vector<int> numbers = {1, 2, 3, 4, 5};
@@ -56,27 +37,22 @@ int main() {
     }
     std::cout << std::endl;
 
-    test1();
-    test2();
-
     std::map<int, int, std::less<int>, MapAllocator<std::pair<const int, int>>> my_map;
-
-    my_map[1] = 10;
-    my_map[2] = 20;
-    my_map[3] = 30;
-
+    for (int i = 0; i <= 10; ++i) {
+        my_map[i] = factorial(i);
+    }
 
     for (const auto &[k, v]: my_map)
         std::cout << k << "->" << v << std::endl;
 
     unidirectionalList<int, MapAllocator<std::pair<const int, int>>> list{};
-    for (int i = 0; i < 10; ++i){
+    for (int i = 0; i < 10; ++i) {
         list.push_back(i);
+        std::cout << i << " ";
     }
-    Node<int>* c_ptr = list.head();
-    for (int i = 0; i < list.size(); ++i) {
-        std::cout << c_ptr->get_value() << " ";
-        c_ptr = c_ptr->next;
+    std::cout << std::endl;
+    for (auto iter: list) {
+        std::cout << iter.get_value() << " ";
     }
 
     return 0;

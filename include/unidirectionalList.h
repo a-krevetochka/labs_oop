@@ -2,6 +2,7 @@
 // Created by meteo on 15.11.2023.
 //
 #include <memory>
+#include "ForwardIterator.h"
 #ifndef LAB0_UNIDIRECTIONALLIST_H
 #define LAB0_UNIDIRECTIONALLIST_H
 
@@ -14,9 +15,6 @@ struct Node {
         return value;
     }
 };
-
-
-
 
 template <typename T, typename Allocator = std::allocator<T>>
 class unidirectionalList {
@@ -52,9 +50,15 @@ public:
         return size_;
     }
 
-    Node<T>* head(){
-        return head_;
-    }
+    ForwardIterator<Node<T>> begin() {
+        ForwardIterator<Node<T>> iter(head_);
+        return iter;
+    };
+
+    ForwardIterator<Node<T>> end() {
+        ForwardIterator<Node<T>> iter(tail_);
+        return ++iter;
+    };
 
 
 private:
