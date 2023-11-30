@@ -4,7 +4,7 @@
 
 /src/.editorconfig
 .idea
-
+lib
 /.vs/
 /test/.vs/
 */Debug
@@ -15,3 +15,4 @@ out/
 /test/bracketsTest.sln
 /build/
 /.vscode/
+/lib/
