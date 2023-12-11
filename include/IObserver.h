@@ -4,7 +4,9 @@
 #pragma once
 
 #include <iostream>
+class NPC;
 
 class IObserver {
-    virtual void update(std::ostream &strm) = 0;
+public:
+    virtual void update(NPC* npc) = 0;
 };

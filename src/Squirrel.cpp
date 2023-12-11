@@ -17,12 +17,14 @@ Squirrel::Squirrel(std::string name, Point coordinates) {
     _coordinates = coordinates;
 }
 
-void Squirrel::update(std::ostream &strm) {
-    strm << this << std::endl << std::endl;
-}
-
 Squirrel::Squirrel() {
     _title = "squirrel";
+}
+
+void Squirrel::write() {
+    for (auto observer : _observers) {
+        observer->update(this);
+    }
 }
 
 

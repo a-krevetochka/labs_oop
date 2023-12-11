@@ -15,12 +15,14 @@ Orc::Orc(std::string name, Point coordinates) {
     _coordinates = coordinates;
 }
 
-void Orc::update(std::ostream &strm) {
-    strm << this << std::endl << std::endl;
-}
-
 Orc::Orc() {
     _title = "orc";
+}
+
+void Orc::write() {
+    for (auto observer : _observers) {
+        observer->update(this);
+    }
 }
 
 

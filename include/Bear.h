@@ -13,7 +13,7 @@ public:
 
     void accept(AttackVisitor attackVisitor, NPC *) override;
 
-    void update(std::ostream &strm) override;
+    void write() override;
 
 };
 

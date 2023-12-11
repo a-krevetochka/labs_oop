@@ -1,19 +1,15 @@
 //
 // Created by meteo on 30.11.2023.
 //
-#include "Observable.h"
+#pragma once
+#include "IObserver.h"
+class NPC;
 
-class ConsoleObserver : public Observable {
+class ConsoleObserver : public IObserver {
 public:
     ConsoleObserver() = default;
 
-    ConsoleObserver(std::vector<NPC*>);
-
-    void subscribe(NPC *) override;
-
-    void unsubscribe(NPC *) override;
-
-    void write() override;
+    void update(NPC* ) override;
 
 };
 

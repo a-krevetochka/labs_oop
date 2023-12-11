@@ -1,5 +1,12 @@
-#include "BattleCreater.h"
+//#include "BattleMaster.h"
+#include "NPC.h"
+#include "NPCfactory.h"
+#include "BattleMaster.h"
+
 int main() {
-    BattleCreater battleCreater;
-    battleCreater.create();
+    BattleMaster battleMaster("npcs.txt", 100);
+    battleMaster.startBattle();
+    battleMaster.writeResults();
+
+
 }

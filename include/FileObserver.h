@@ -1,19 +1,16 @@
 //
 // Created by meteo on 30.11.2023.
 //
-#include "Observable.h"
+#pragma once
 #include "fstream"
+#include "IObserver.h"
+class NPC;
 
-class FileObserver : public Observable {
+class FileObserver : public IObserver {
 public:
     FileObserver() = default;
 
-    FileObserver(std::vector<NPC*> npcs);
+    void update(NPC* npc) override;
 
-    void subscribe(NPC *) override;
-
-    void unsubscribe(NPC *) override;
-
-    void write() override;
 };
 

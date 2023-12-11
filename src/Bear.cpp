@@ -17,11 +17,14 @@ Bear::Bear(std::string name, Point coordinates) {
     _coordinates = coordinates;
 }
 
-void Bear::update(std::ostream &strm) {
-    strm << this << std::endl << std::endl;
-}
 
 Bear::Bear() {
     _title = "bear";
+}
+
+void Bear::write() {
+    for (auto observer : _observers) {
+        observer->update(this);
+    }
 }
 

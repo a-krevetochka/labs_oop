@@ -7,9 +7,12 @@
 #include "AttackVisitorable.h"
 #include "cmath"
 #include "iostream"
+#include "Observable.h"
+#include "ConsoleObserver.h"
+#include "FileObserver.h"
 #include "IObserver.h"
 
-class NPC : public AttackVisitorable, IObserver {
+class NPC : public AttackVisitorable, Observable {
 protected:
     Point _coordinates;
 
@@ -19,11 +22,13 @@ protected:
 
     bool _isAlive;
 
+    std::vector<IObserver*> _observers = {new FileObserver, new ConsoleObserver};
+
 public:
 
-    void accept(AttackVisitor attackVisitor, NPC *) override = 0;
+    void write() override = 0;
 
-    void update(std::ostream &strm) override = 0;
+    void accept(AttackVisitor attackVisitor, NPC *) override = 0;
 
     [[nodiscard]] const Point &getCoordinates() const;
 
